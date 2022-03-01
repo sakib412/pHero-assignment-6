@@ -49,6 +49,8 @@ const displayResult = (result) => {
 
 const showDetails = slug => {
     console.log(slug);
-
-
+    fetch(`https://openapi.programming-hero.com/api/phone/${slug}`)
+        .then(res => res.json())
+        .then(data => { console.log(data) })
+        .catch(err => { console.log(err) })
 }
