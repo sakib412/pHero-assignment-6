@@ -42,6 +42,11 @@ const displayResult = (result) => {
         console.log("all", data)
         console.log("Only First Twenty", firstTwenty)
 
+    } else {
+        const h2 = document.createElement("h2");
+        h2.classList.add("text-center");
+        h2.innerText = "No phone found!!!";
+        resultsContainer.appendChild(h2)
     }
 
 }
