@@ -3,6 +3,10 @@ const onSearch = () => {
     // get input value
     const searchInput = document.getElementById("search-input");
     const searchText = searchInput.value;
+    const spinner = document.getElementById("spinner");
+    // show spinner
+    spinner.style.display = "block";
+
     // call api
     fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
         .then(res => res.json())
@@ -10,9 +14,14 @@ const onSearch = () => {
             displayResult(data);
             // after display clear input value
             searchInput.value = "";
-
+            // hide spinner
+            spinner.style.display = "none";
         })
-        .catch(err => { console.log(err) })
+        .catch(err => {
+            console.log(err)
+            // hide spinner
+            spinner.style.display = "none";
+        })
 }
 
 
