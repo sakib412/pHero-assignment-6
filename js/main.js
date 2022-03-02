@@ -56,6 +56,47 @@ const showDetails = slug => {
     console.log(slug);
     fetch(`https://openapi.programming-hero.com/api/phone/${slug}`)
         .then(res => res.json())
-        .then(data => { console.log(data) })
+        .then(data => { openModal(data) })
         .catch(err => { console.log(err) })
+}
+
+// Open Modal
+const openModal = (response) => {
+    const { data } = response;
+    const modalElement = document.getElementById("phone-details");
+    const modalBody = document.getElementById("modal-body");
+    console.log(response)
+    const modalContent = `
+        <div>
+            <div class="d-flex justify-content-center">
+                <img src="${data.image}" class="img-fluid">
+            </div>
+            <h2 class="mt-3">${data.name}</h2>
+            <div class="mb-5 pb-5">
+                <h4>Brand: ${data?.brand}</h4>
+                <p><span class="fst-italic">Release Date</span>: ${data?.releaseDate ? data?.releaseDate : "No release date found!"} </p>
+                <p><span class="fst-italic">Main features</span>: <ul>${Object.entries(data?.mainFeatures).map(([key, value]) => (`
+                    <li>
+                        <strong>${key.toUpperCase()}</strong>: ${Array.isArray(value) ? value.map(sensor => sensor) : value}
+                    </li>`)
+    )}
+                </ul>
+                </p>
+                <p><span class="fst-italic">Other Features</span>:
+                    <ul>
+                    ${Object.entries(data?.others).map(([key, value]) => (`
+                    <li>
+                        <strong>${key.toUpperCase()}</strong>: ${value}
+                    </li>`)
+    )}
+                    </ul>
+                    
+                </p>
+            </div>
+        </div>
+    `
+    modalBody.innerHTML = modalContent;
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+
 }
