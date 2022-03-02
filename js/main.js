@@ -39,8 +39,6 @@ const displayResult = (result) => {
             resultsContainer.innerHTML += card;
         })
 
-        console.log("all", data)
-        console.log("Only First Twenty", firstTwenty)
 
     } else {
         const h2 = document.createElement("h2");
@@ -53,7 +51,6 @@ const displayResult = (result) => {
 
 
 const showDetails = slug => {
-    console.log(slug);
     fetch(`https://openapi.programming-hero.com/api/phone/${slug}`)
         .then(res => res.json())
         .then(data => { openModal(data) })
@@ -65,7 +62,6 @@ const openModal = (response) => {
     const { data } = response;
     const modalElement = document.getElementById("phone-details");
     const modalBody = document.getElementById("modal-body");
-    console.log(response)
     const modalContent = `
         <div>
             <div class="d-flex justify-content-center">
