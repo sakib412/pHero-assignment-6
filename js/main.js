@@ -77,7 +77,7 @@ const openModal = (response) => {
                 <img src="${data.image}" class="img-fluid">
             </div>
             <h2 class="mt-3">${data.name}</h2>
-            <div class="mb-5 pb-5">
+            <div class="pb-5">
                 <h4>Brand: ${data?.brand}</h4>
                 <p><span class="fst-italic">Release Date</span>: ${data?.releaseDate ? data?.releaseDate : "No release date found!"} </p>
                 <p><span class="fst-italic">Main features</span>: <ul>${data.mainFeatures ? Object.entries(data?.mainFeatures).map(([key, value]) => (`
