@@ -71,20 +71,20 @@ const openModal = (response) => {
             <div class="mb-5 pb-5">
                 <h4>Brand: ${data?.brand}</h4>
                 <p><span class="fst-italic">Release Date</span>: ${data?.releaseDate ? data?.releaseDate : "No release date found!"} </p>
-                <p><span class="fst-italic">Main features</span>: <ul>${Object.entries(data?.mainFeatures).map(([key, value]) => (`
+                <p><span class="fst-italic">Main features</span>: <ul>${data.mainFeatures ? Object.entries(data?.mainFeatures).map(([key, value]) => (`
                     <li>
                         <strong>${key.toUpperCase()}</strong>: ${Array.isArray(value) ? value.map(sensor => sensor) : value}
                     </li>`)
-    )}
+    ) : "Not found!"}
                 </ul>
                 </p>
                 <p><span class="fst-italic">Other Features</span>:
                     <ul>
-                    ${Object.entries(data?.others).map(([key, value]) => (`
+                    ${data.others ? Object?.entries(data?.others).map(([key, value]) => (`
                     <li>
                         <strong>${key.toUpperCase()}</strong>: ${value}
                     </li>`)
-    )}
+    ) : "Not found"}
                     </ul>
                     
                 </p>
